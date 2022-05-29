@@ -46,6 +46,10 @@ sub line2hash($) {
     my %thash;
     
     chomp $entry;
+
+    # コメント行であった場合は空ハッシュを返して終了
+    if ($entry =~ /^\#/) { return %thash; }
+
     my @member = split /:/, $entry;
     
     my $mark = $member[0];
